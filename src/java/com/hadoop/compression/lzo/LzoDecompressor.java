@@ -259,6 +259,10 @@ class LzoDecompressor implements Decompressor {
     return false;
   }
 
+  public synchronized int getRemaining() {
+    return uncompressedDirectBuf.remaining();
+  }
+
   public synchronized boolean needsDictionary() {
     return false;
   }
