@@ -17,7 +17,11 @@ ACLOCAL_AMFLAGS = -I m4
 
 AM_CPPFLAGS = @JNI_CPPFLAGS@ -I$(srcdir)/impl -Isrc/com/hadoop/compression/lzo
 AM_LDFLAGS = @JNI_LDFLAGS@
-AM_CFLAGS = -g -Wall -fPIC -O2 -m$(JVM_DATA_MODEL)
+if platformIsAarch64
+        AM_CFLAGS = -g -Wall -fPIC -O2 -mabi=lp64
+else
+        AM_CFLAGS = -g -Wall -fPIC -O2 -m$(JVM_DATA_MODEL)
+endif
 
 # Define the libaries that need to be built
 lib_LTLIBRARIES = libgplcompression.la

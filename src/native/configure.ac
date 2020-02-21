@@ -61,6 +61,9 @@ AC_FUNC_STRERROR_R
 # Checks for library functions.
 AC_CHECK_FUNCS([mkdir uname memset])
 
+# Judge platform
+AM_CONDITIONAL(platformIsAarch64,test "X$OS_ARCH"="Xaarch64")
+
 dnl Check for '-ljvm'
 JNI_LDFLAGS=""
 if test "x$JAVA_HOME" != "x"
